@@ -16,8 +16,8 @@ export class MainContentComponent implements OnInit {
   }
 
   set searchFilter(value: string) {
-    this._searchFilter = value.toLowerCase()
-    this.doSearch()
+    this._searchFilter = value
+    this.doSearch((value) ? value.toLowerCase(): value)
   }
 
   books: any[] = []
@@ -29,9 +29,9 @@ export class MainContentComponent implements OnInit {
     this.books = books.items;
   }
 
-  doSearch() {
-    if (this._searchFilter)
-      this.books = books.items.filter(s => s.volumeInfo.title.toLowerCase().includes(this._searchFilter))
+  doSearch(filter: string) {
+    if (filter)
+      this.books = books.items.filter(s => s.volumeInfo.title.toLowerCase().includes(filter))
     else
       this.books = books.items;
   }
