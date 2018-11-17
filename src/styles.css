@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --main-style-color: rgba(206, 45, 45, 0.8);
+    --main-shadow-color: rgba(0, 0, 0, .4);
+    --header-back-color: rgba(215, 219, 224, 1);
+    --main-title-color: rgba(255, 255, 255, 1);
+    --input-border-color: rgba(237, 238, 239, 1);
+    --button-border-color: rgba(83, 156, 252, 1);
+}
+
+html, body, .container-fluid {
+    height: 100%;
+}
+
+.left-aside {
+    box-shadow: 1px 0 2px var(--main-shadow-color); 
+    padding: 0;
+    height: 100%;
+    transition: max-width .3s;
+}
+
+div.user-image > img {
+   width: 100px;
+   border-radius: 50px;
+}
+
+/** Closed */
+
+.left-aside.closed {
+   max-width: 50px;
+}
+
+.left-aside.closed div.user-info {
+   display: none;
+}
+
+.left-aside.closed div.user-image > img {
+   width: 30px;
+}
+
+.left-aside.closed a.nav-link span {
+   display: none;
+}
+
+.detail-container aside {
+    float: right;
+    width: 300px;
+    margin-left: 25px;
+}
+.detail-container aside img {
+    width: 100%;
+}
+
+/** Content */
+nav .breadcrumb {
+    width: 100%
+}
+
+/** Detail */
+div.detail-container {
+    padding: 25px;
+    width: 100%
+}

@@ -1,0 +1,22 @@
+header.pokeNavBar {
+    min-height: 50px;
+    background-color: var(--main-style-color);
+}
+
+header.pokeNavBar .toggle-sidebar, h1 {
+    color: var(--main-title-color);
+}
+
+header.pokeNavBar h1 {
+    font-size: 1.4em;
+    display: inline-block;
+}
+
+a.link-profile img {
+    width: 40px;
+    border-radius: 40px;
+}
+
+a.toggle-sidebar i:hover {
+    cursor: context-menu;
+}

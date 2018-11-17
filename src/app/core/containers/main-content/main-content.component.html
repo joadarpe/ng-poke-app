@@ -1,0 +1,25 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Home</a>
+    </li>
+    <li class="breadcrumb-item active">
+      Library
+    </li>
+  </ol>
+</nav>
+<div id="dynamicContent" class="row">
+  <div *ngFor="let book of books" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+    <div class="card">
+      <div class="card-header">
+        {{book.volumeInfo.title}}
+      </div>
+      <img class="card-img-top" src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">{{book.volumeInfo.publisher}}</p>
+        <p class="card-text">{{book.volumeInfo.publishedDate}}</p>
+        <a href="#/detail/{{book.id}}" class="btn btn-primary col-12 col-md-auto col-lg-auto">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
