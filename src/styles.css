@@ -12,6 +12,10 @@ html, body, .container-fluid {
     height: 100%;
 }
 
+a i.fa {
+    margin-right: 5px;
+}
+
 .left-aside {
     box-shadow: 1px 0 2px var(--main-shadow-color); 
     padding: 0;

@@ -9,16 +9,17 @@
   </ol>
 </nav>
 <div id="dynamicContent" class="row">
-  <div *ngFor="let book of books" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+  <div *ngFor="let pokemon of pokemons" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
     <div class="card">
-      <div class="card-header">
-        {{book.volumeInfo.title}}
-      </div>
-      <img class="card-img-top" src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="Card image cap">
+      <img class="card-img-top" src="{{pokemon.sprites.front_default}}" alt="{{pokemon.name}}_front_default">
       <div class="card-body">
-        <p class="card-text">{{book.volumeInfo.publisher}}</p>
-        <p class="card-text">{{book.volumeInfo.publishedDate}}</p>
-        <a href="#/detail/{{book.id}}" class="btn btn-primary col-12 col-md-auto col-lg-auto">Go somewhere</a>
+        <h5 class="card-title">[#{{pokemon.id}}] {{pokemon.name}}</h5>
+        <p class="card-text">Weight: {{pokemon.weight}} - Height: {{pokemon.height}}</p>
+      </div>
+      <div class="card-footer text-right">
+        <a href="#/favorite/{{pokemon.id}}"><i class="fa fa-heart"></i></a>
+        <a href="#/detail/{{pokemon.id}}"><i class="fa fa-bars"></i></a>
+        <a href="#/share/{{pokemon.id}}"><i class="fa fa-share"></i></a>
       </div>
     </div>
   </div>

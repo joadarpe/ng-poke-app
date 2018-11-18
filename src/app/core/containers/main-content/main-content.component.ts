@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { books } from '../../data/books'
+import { pokemons } from '../../data/pokemon'
+import { Pokemon } from '../../models/classes/Pokemon';
+import { Result } from '../../models/classes/Results';
 
 @Component({
   selector: 'app-main-content',
@@ -20,20 +22,30 @@ export class MainContentComponent implements OnInit {
     this.doSearch((value) ? value.toLowerCase(): value)
   }
 
-  books: any[] = []
+  pokemons: Pokemon[]
 
   constructor() {
   }
 
   ngOnInit() {
-    this.books = books.items;
+    this.loadPokemons(pokemons.results)
   }
 
   doSearch(filter: string) {
+    let results = pokemons.results
     if (filter)
-      this.books = books.items.filter(s => s.volumeInfo.title.toLowerCase().includes(filter))
-    else
-      this.books = books.items;
+      results = pokemons.results.filter(s => s.name.toLowerCase().includes(filter))
+    this.loadPokemons(results)
+  }
+
+  loadPokemons(results: Result[]) {
+    this.pokemons = []
+    results.forEach(r => this.loadPokemonInfo(this.pokemons, r))
+    this.pokemons = this.pokemons.sort((p1, p2) => p1.id - p2.id)
+  }
+
+  loadPokemonInfo(ps: any[], r: Result) {
+    fetch(r.url).then(r => r.json()).then(json => ps.push(json));
   }
 
 }
