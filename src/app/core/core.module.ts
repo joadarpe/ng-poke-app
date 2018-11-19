@@ -7,9 +7,11 @@ import { MainContentComponent } from './containers/main-content/main-content.com
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { AsideHeaderComponent } from './components/aside-header/aside-header.component';
 import { TopNavBarSearchComponent } from './components/top-nav-bar-search/top-nav-bar-search.component';
+import { PokemonListCardComponent } from './components/pokemon-list-card/pokemon-list-card.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
-  declarations: [CoreComponent, TopNavBarComponent, LeftAsideComponent, MainContentComponent, MainMenuComponent, AsideHeaderComponent, TopNavBarSearchComponent],
+  declarations: [CoreComponent, TopNavBarComponent, LeftAsideComponent, MainContentComponent, MainMenuComponent, AsideHeaderComponent, TopNavBarSearchComponent, PokemonListCardComponent, PaginationComponent],
   imports: [
     CommonModule
   ],

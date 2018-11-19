@@ -1,0 +1,25 @@
+<nav *ngIf="pages?.length > 1" aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [ngClass]="{disabled: actualPage == 1}" (click)="setPage(1)">
+      <a class="page-link" href="#">First</a>
+    </li>
+    <li class="page-item" [ngClass]="{disabled: actualPage == 1}" (click)="setPreviousPage()">
+        <a class="page-link" href="#" aria-label="Previous" >
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+    <li *ngFor="let page of pages" [ngClass]="{active: page == actualPage}" class="page-item" (click)="setPage(page)">
+      <a class="page-link" href="#">{{page}}</a>
+    </li>
+    <li class="page-item" [ngClass]="{disabled: actualPage == pages.length}" (click)="setNextPage()">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    <li class="page-item" [ngClass]="{disabled: actualPage == pages.length}" (click)="setPage(pages.length)">
+      <a class="page-link" href="#">Last</a>
+    </li>
+  </ul>
+</nav>
