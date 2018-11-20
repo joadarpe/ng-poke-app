@@ -33,6 +33,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   doSearch(filter: string) {
+    this.paginator.actualPage = 1
     let results = pokemons.results
     if (filter)
       results = pokemons.results.filter(s => s.name.toLowerCase().includes(filter))
