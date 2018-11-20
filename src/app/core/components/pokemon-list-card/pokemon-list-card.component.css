@@ -1,3 +1,7 @@
 .card {
     margin-bottom: 16px;
 }
+
+img.card-img-top {
+    background-color: var(--header-back-color)
+}

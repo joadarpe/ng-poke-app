@@ -9,9 +9,10 @@ import { AsideHeaderComponent } from './components/aside-header/aside-header.com
 import { TopNavBarSearchComponent } from './components/top-nav-bar-search/top-nav-bar-search.component';
 import { PokemonListCardComponent } from './components/pokemon-list-card/pokemon-list-card.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 
 @NgModule({
-  declarations: [CoreComponent, TopNavBarComponent, LeftAsideComponent, MainContentComponent, MainMenuComponent, AsideHeaderComponent, TopNavBarSearchComponent, PokemonListCardComponent, PaginationComponent],
+  declarations: [CoreComponent, TopNavBarComponent, LeftAsideComponent, MainContentComponent, MainMenuComponent, AsideHeaderComponent, TopNavBarSearchComponent, PokemonListCardComponent, PaginationComponent, PokemonListComponent],
   imports: [
     CommonModule
   ],

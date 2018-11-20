@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Paginator } from '../../services/Paginator';
 
 @Component({
   selector: 'app-pagination',
@@ -8,10 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PaginationComponent implements OnInit {
 
   @Input()
-  pages: number[]
-
-  @Input()
-  actualPage: number
+  paginator: Paginator
 
   @Output() pageEmitter: EventEmitter<number> = new EventEmitter()
 
@@ -21,18 +19,18 @@ export class PaginationComponent implements OnInit {
   }
 
   setPage(page: number) {
-    if (page != this.actualPage)
+    if (page != this.paginator.actualPage)
       this.pageEmitter.emit(page)
   }
 
   setPreviousPage() {
-    if (this.actualPage > 1)
-      this.setPage(this.actualPage - 1)
+    if (this.paginator.actualPage > 1)
+      this.setPage(this.paginator.actualPage - 1)
   }
 
   setNextPage() {
-    if (this.actualPage < this.pages.length)
-      this.setPage(this.actualPage + 1)
+    if (this.paginator.actualPage < this.paginator.pages.length)
+      this.setPage(this.paginator.actualPage + 1)
   }
 
 }
