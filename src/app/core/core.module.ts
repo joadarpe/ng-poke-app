@@ -10,9 +10,11 @@ import { TopNavBarSearchComponent } from './components/top-nav-bar-search/top-na
 import { PokemonListCardComponent } from './components/pokemon-list-card/pokemon-list-card.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
+import { EmailPipe } from './components/pipes/email.pipe';
+import { OrderByPipe } from './components/pipes/order-by.pipe';
 
 @NgModule({
-  declarations: [CoreComponent, TopNavBarComponent, LeftAsideComponent, MainContentComponent, MainMenuComponent, AsideHeaderComponent, TopNavBarSearchComponent, PokemonListCardComponent, PaginationComponent, PokemonListComponent],
+  declarations: [CoreComponent, TopNavBarComponent, LeftAsideComponent, MainContentComponent, MainMenuComponent, AsideHeaderComponent, TopNavBarSearchComponent, PokemonListCardComponent, PaginationComponent, PokemonListComponent, EmailPipe, OrderByPipe],
   imports: [
     CommonModule
   ],

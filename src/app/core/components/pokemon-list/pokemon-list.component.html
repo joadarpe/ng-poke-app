@@ -7,7 +7,7 @@
     </ol>
   </nav>
   <div class="row">
-    <app-pokemon-list-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"></app-pokemon-list-card>
+    <app-pokemon-list-card *ngFor="let pokemon of pokemons | orderBy: 'id'" [pokemon]="pokemon" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"></app-pokemon-list-card>
   </div>
   <div class="col-12">
     <app-pagination [paginator]="paginator" (pageEmitter)="loadPage($event)"></app-pagination>

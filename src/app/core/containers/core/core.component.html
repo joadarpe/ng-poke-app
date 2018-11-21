@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <app-top-nav-bar (searchEmitter)="callSearch($event)"></app-top-nav-bar>
+      <app-top-nav-bar (searchEmitter)="callSearch($event)" (toggleMenuEmitter)='changeState($event)'></app-top-nav-bar>
     </div>
   </div>
   <div class="body-content row">
-    <app-left-aside class="col-2 left-aside"></app-left-aside>
-    <app-main-content [searchFilter]="searchFilter" class="col-10 main-section"></app-main-content>
+    <app-left-aside class="left-aside" [ngClass]="asideState == 'close' ? 'closed' : 'col-2'" [@asideAnimation]='asideState'></app-left-aside>
+    <app-main-content [searchFilter]="searchFilter" class="main-section" [ngClass]="asideState == 'close' ? 'col-11' : 'col-10'"></app-main-content>
   </div>
 </div>

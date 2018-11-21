@@ -49,7 +49,6 @@ export class PokemonListComponent implements OnInit {
     this.pokemons = []
     let pageResults = this.paginator.loadActualPage(results)
     pageResults.forEach(r => this.loadPokemonInfo(this.pokemons, r))
-    this.pokemons = this.pokemons.sort((p1, p2) => p1.id - p2.id)
   }
 
   loadPokemonInfo(ps: any[], r: Result) {

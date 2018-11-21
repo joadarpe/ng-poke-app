@@ -30,10 +30,6 @@ div.user-image > img {
 
 /** Closed */
 
-.left-aside.closed {
-   max-width: 50px;
-}
-
 .left-aside.closed div.user-info {
    display: none;
 }

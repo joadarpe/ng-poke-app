@@ -9,21 +9,22 @@ import * as $ from 'jquery';
 export class TopNavBarComponent implements OnInit {
 
   @Output() searchEmitter: EventEmitter<string> = new EventEmitter()
+  @Output() toggleMenuEmitter: EventEmitter<string> = new EventEmitter()
+
+  isOpen: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
-    $("a.toggle-sidebar").click(function () {
-      event.preventDefault()
-      $(".left-aside").toggleClass("closed")
-      $(".left-aside").toggleClass("col-2")
-      $(".main-section").toggleClass("col-10")
-      $(".main-section").toggleClass("col-11")
-    })
   }
 
   callSearch(value: string) {
     this.searchEmitter.emit(value)
+  }
+
+  toggleMenu() {
+    this.isOpen = !this.isOpen
+    this.toggleMenuEmitter.emit(this.isOpen ? 'open' : 'close')
   }
 
 }
