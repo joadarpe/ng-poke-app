@@ -1,8 +1,8 @@
-import { Result } from "./Results";
+import { NamedAPIResource } from "./NamedAPIResource";
 
 export class Root {
     count: number
     next: any
     previous: any
-    results: Result[]
+    results: NamedAPIResource[]
 }

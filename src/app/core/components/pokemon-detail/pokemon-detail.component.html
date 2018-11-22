@@ -1,0 +1,38 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a routerLink="../../main">Pokemons</a></li>
+    <li class="breadcrumb-item active">{{pokemon?.name}}</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col-8">
+    <h2>{{pokemon?.name}}</h2>
+    <p>
+
+    </p>
+    <p class="card-text"><b>Weight:</b> {{pokemon?.weight}}</p>
+    <p class="card-text"><b>Height:</b> {{pokemon?.height}}</p>
+    <p>Abilities</p>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pokemon?.abilities; index as i">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{item.ability.name}}</td>
+          <td>{{item.ability.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-4">
+    <img class="card-img-top" src="{{pokemon?.sprites?.front_default}}" alt="{{pokemon?.name}}_front_default">
+  </div>
+</div>

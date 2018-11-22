@@ -1,4 +1,4 @@
-export class Result {
+export class NamedAPIResource {
     name: string
     url: string
 }

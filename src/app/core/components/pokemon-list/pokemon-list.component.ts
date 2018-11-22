@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { pokemons } from '../../data/pokemon'
 import { Pokemon } from '../../models/classes/Pokemon';
-import { Result } from '../../models/classes/Results';
+import { NamedAPIResource } from '../../models/classes/NamedAPIResource';
 import { Paginator } from '../../services/Paginator';
 
 @Component({
@@ -45,13 +45,13 @@ export class PokemonListComponent implements OnInit {
     this.loadPokemons(pokemons.results)
   }
 
-  loadPokemons(results: Result[]) {
+  loadPokemons(results: NamedAPIResource[]) {
     this.pokemons = []
     let pageResults = this.paginator.loadActualPage(results)
     pageResults.forEach(r => this.loadPokemonInfo(this.pokemons, r))
   }
 
-  loadPokemonInfo(ps: any[], r: Result) {
+  loadPokemonInfo(ps: any[], r: NamedAPIResource) {
     fetch(r.url).then(r => r.json()).then(json => ps.push(json));
   }
 

@@ -1,4 +1,5 @@
 import { Sprites } from "./Sprites";
+import { PokemonAbility } from "./PokemonAbility";
 
 export class Pokemon {
     id: number
@@ -6,4 +7,5 @@ export class Pokemon {
     weight: number
     height: number
     sprites: Sprites
+    abilities: PokemonAbility[]
 }
