@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-top-nav-bar',

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { pokemons } from '../../data/pokemon'
-import { Pokemon } from '../../models/classes/Pokemon';
-import { NamedAPIResource } from '../../models/classes/NamedAPIResource';
-import { Paginator } from '../../services/Paginator';
+import { Pokemon } from 'src/app/core/models/classes/Pokemon';
+import { Paginator } from 'src/app/core/services/Paginator';
+import { pokemons } from 'src/app/core/data/pokemon';
+import { NamedAPIResource } from 'src/app/core/models/classes/NamedAPIResource';
 
 @Component({
   selector: 'app-pokemon-list',

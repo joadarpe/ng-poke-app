@@ -8,7 +8,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('asideAnimation', [
       state('close', style({ width: '50px' })),
-      state('open', style({ width: '100%' })),
+      state('open', style({ width: '200px' })),
       transition('open => close', animate('500ms ease-out')),
       transition('close => open', animate('500ms ease-in'))
     ])
