@@ -6,6 +6,7 @@ import { CoreModule } from './core/core.module'
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app.routes';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AppRoutes } from './app.routes';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
+    AuthModule,
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [],
