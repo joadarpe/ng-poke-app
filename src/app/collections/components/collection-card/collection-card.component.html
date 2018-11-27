@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-9">
+        <h4 class="card-title">
+          <span class="badge badge-secondary">{{collection.id}}</span>
+          {{collection.name}}
+        </h4>
+        <p>{{collection.description}}</p>
+      </div>
+      <div class="col-3">
+        <img class="card-img-top" src="{{collection.image}}" alt="{{collection.name}}">
+      </div>
+    </div>
+
+    <div class="row justify-content-end">
+      <div class="col-2">
+        <a [routerLink]="['../detail/', collection.id]">Entrar</a>
+      </div>
+      <div class="col-2">
+        <a [routerLink]="['../detail/', collection.id]">Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>

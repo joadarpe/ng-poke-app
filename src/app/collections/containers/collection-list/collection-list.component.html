@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/main/pokemons">Home</a></li>
+      <li class="breadcrumb-item active">Collections</li>
+    </ol>
+  </nav>
+  <div class="row">
+    <app-collection-card *ngFor="let collection of collections | orderBy: 'id'" [collection]="collection" class="col-12"></app-collection-card>
+  </div>
+  <div class="col-12">
+    <app-pagination [paginator]="paginator" (pageEmitter)="loadPage($event)"></app-pagination>
+  </div>

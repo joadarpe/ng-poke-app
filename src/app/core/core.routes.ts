@@ -10,6 +10,10 @@ export const CoreRoutes: Routes = [
                 path: 'pokemons',
                 loadChildren: '../pokemons/pokemons.module#PokemonsModule'
             },
+            {
+                path: 'collections',
+                loadChildren: '../collections/collections.module#CollectionsModule'
+            }
         ]
     }/*,
     {
