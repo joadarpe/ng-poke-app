@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Pokemon } from 'src/app/core/models/classes/Pokemon';
+import { PokedexService } from 'src/app/core/services/pokedex/pokedex.service';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -11,14 +12,13 @@ export class PokemonDetailComponent implements OnInit {
 
   pokemon: Pokemon
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private pokedex: PokedexService) {
   }
 
-  ngOnInit() {let id: string
-    this.route.params.subscribe((params: Params) => id = params.id)
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`).then(r => r.json()).then(json => {
-      this.pokemon = json
-    });
+  ngOnInit() {
+    let name: string
+    this.route.params.subscribe((params: Params) => name = params.name)
+    this.pokedex.getPokemonByName(name).then(p => this.pokemon = p)
   }
 
 }

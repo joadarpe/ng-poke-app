@@ -3,6 +3,7 @@ import { Pokemon } from 'src/app/core/models/classes/Pokemon';
 import { Paginator } from 'src/app/core/services/Paginator';
 import { pokemons } from 'src/app/core/data/pokemon';
 import { NamedAPIResource } from 'src/app/core/models/classes/NamedAPIResource';
+import { PokedexService } from 'src/app/core/services/pokedex/pokedex.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -26,7 +27,7 @@ export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[] = []
   paginator: Paginator = new Paginator();
 
-  constructor() { }
+  constructor(private pokedex: PokedexService) { }
 
   ngOnInit() {
     this.loadPokemons(pokemons.results)
@@ -52,7 +53,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   loadPokemonInfo(ps: any[], r: NamedAPIResource) {
-    fetch(r.url).then(r => r.json()).then(json => ps.push(json));
+    this.pokedex.getPokemonByName(r.name).then(p => ps.push(p));
   }
 
 }
