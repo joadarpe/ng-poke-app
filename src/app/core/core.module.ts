@@ -12,9 +12,10 @@ import { MainContentComponent } from './containers/main-content/main-content.com
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { EmailPipe } from './components/pipes/email.pipe';
 import { OrderByPipe } from './components/pipes/order-by.pipe';
+import { CapitalCasePipe } from './components/pipes/capital-case.pipe';
 
 @NgModule({
-  declarations: [CoreComponent, TopNavBarComponent, LeftAsideComponent, MainContentComponent, MainMenuComponent, AsideHeaderComponent, TopNavBarSearchComponent, PaginationComponent, EmailPipe, OrderByPipe],
+  declarations: [CoreComponent, TopNavBarComponent, LeftAsideComponent, MainContentComponent, MainMenuComponent, AsideHeaderComponent, TopNavBarSearchComponent, PaginationComponent, EmailPipe, OrderByPipe, CapitalCasePipe],
   imports: [
     CommonModule,
     RouterModule.forChild(CoreRoutes)
@@ -22,7 +23,8 @@ import { OrderByPipe } from './components/pipes/order-by.pipe';
   exports: [
     CoreComponent,
     PaginationComponent,
-    OrderByPipe
+    OrderByPipe,
+    CapitalCasePipe
   ]
 })
 export class CoreModule { }

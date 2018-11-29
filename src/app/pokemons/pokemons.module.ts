@@ -6,9 +6,11 @@ import { PokemonDetailComponent } from './containers/pokemon-detail/pokemon-deta
 import { RouterModule } from '@angular/router';
 import { PokemonsRoutes } from './pokemons.routes';
 import { CoreModule } from '../core/core.module';
+import { DetailContentComponent } from './components/detail-content/detail-content.component';
+import { SimilarContentComponent } from './components/similar-content/similar-content.component';
 
 @NgModule({
-  declarations: [PokemonListCardComponent, PokemonListComponent, PokemonDetailComponent],
+  declarations: [PokemonListCardComponent, PokemonListComponent, PokemonDetailComponent, DetailContentComponent, SimilarContentComponent],
   imports: [
     CommonModule,
     CoreModule,

@@ -3,14 +3,12 @@
   <div class="card-body">
     <h4 class="card-title">
       <span class="badge badge-secondary">{{pokemon.id}}</span>
-      {{pokemon.name}}
+      {{pokemon.name | capitalCase}}
     </h4>
-    <p class="card-text"><b>Weight:</b> {{pokemon.weight}}</p>
-    <p class="card-text"><b>Height:</b> {{pokemon.height}}</p>
   </div>
   <div class="card-footer text-right">
-    <a href="#/favorite/{{pokemon.id}}"><i class="fa fa-heart"></i></a>
-    <a [routerLink]="['../detail/', pokemon.name]"><i class="fa fa-bars"></i></a>
-    <a href="#/share/{{pokemon.id}}"><i class="fa fa-share"></i></a>
+    <a href="#/favorite/{{pokemon.id}}" title="Add to favorites"><i class="fa fa-heart"></i></a>
+    <a [routerLink]="['../detail/', pokemon.name]" title="Details"><i class="fa fa-bars"></i></a>
+    <a href="#/share/{{pokemon.id}}" title="Share"><i class="fa fa-share"></i></a>
   </div>
 </div>
