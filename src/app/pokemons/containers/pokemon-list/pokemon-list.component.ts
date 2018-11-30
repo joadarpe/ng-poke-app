@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pokemon } from 'src/app/core/models/classes/Pokemon';
 import { Paginator } from 'src/app/core/services/Paginator';
-import { pokemons } from 'src/app/core/data/pokemon';
 import { NamedAPIResource } from 'src/app/core/models/classes/NamedAPIResource';
 import { PokedexService } from 'src/app/core/services/pokedex/pokedex.service';
+import { PokemonService } from 'src/app/core/services/pokemon/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -24,26 +24,30 @@ export class PokemonListComponent implements OnInit {
     this.doSearch((value) ? value.toLowerCase() : value)
   }
 
+  pokemonsResult: NamedAPIResource[]
   pokemons: Pokemon[] = []
   paginator: Paginator = new Paginator();
 
-  constructor(private pokedex: PokedexService) { }
+  constructor(private pokemonsService: PokemonService, private pokedex: PokedexService) { }
 
   ngOnInit() {
-    this.loadPokemons(pokemons.results)
+    this.pokemonsService.getPokemons().subscribe(ps => {
+      this.pokemonsResult = ps
+      this.loadPokemons(this.pokemonsResult)
+    })
   }
 
   doSearch(filter: string) {
     this.paginator.actualPage = 1
-    let results = pokemons.results
+    let results = this.pokemonsResult
     if (filter)
-      results = pokemons.results.filter(s => s.name.toLowerCase().includes(filter))
+      results = this.pokemonsResult.filter(s => s.name.toLowerCase().includes(filter))
     this.loadPokemons(results)
   }
 
   loadPage(page: number) {
     this.paginator.actualPage = page
-    this.loadPokemons(pokemons.results)
+    this.loadPokemons(this.pokemonsResult)
   }
 
   loadPokemons(results: NamedAPIResource[]) {

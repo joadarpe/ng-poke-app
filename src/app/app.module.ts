@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app.routes';
 import { AuthModule } from './auth/auth.module';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
+import { InMemoryDataService } from './in-memory-api/pokemons-api';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,12 @@ import { AuthModule } from './auth/auth.module';
     BrowserAnimationsModule,
     CoreModule,
     AuthModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    HttpModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
