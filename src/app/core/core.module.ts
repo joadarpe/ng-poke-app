@@ -13,12 +13,14 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { EmailPipe } from './components/pipes/email.pipe';
 import { OrderByPipe } from './components/pipes/order-by.pipe';
 import { CapitalCasePipe } from './components/pipes/capital-case.pipe';
+import { AlertsModule } from '../alerts/alerts.module';
 
 @NgModule({
   declarations: [CoreComponent, TopNavBarComponent, LeftAsideComponent, MainContentComponent, MainMenuComponent, AsideHeaderComponent, TopNavBarSearchComponent, PaginationComponent, EmailPipe, OrderByPipe, CapitalCasePipe],
   imports: [
     CommonModule,
-    RouterModule.forChild(CoreRoutes)
+    RouterModule.forChild(CoreRoutes),
+    AlertsModule
   ],
   exports: [
     CoreComponent,
