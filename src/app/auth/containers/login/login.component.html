@@ -4,31 +4,7 @@
       <div class="card-body">
         <div class="row align-items-center">
           <div class="col-7">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title">
-                  <h3>Log in!</h3>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input [(ngModel)]="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword1"
-                    placeholder="Password">
-                </div>
-                <div class="form-group form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <div class="form-group text-right">
-                  <button routerLink="/main/pokemons" class="btn btn-primary">Login</button>
-                </div>
-              </div>
-            </div>
+            <app-login-form (loginEmitter)="auth($event)"></app-login-form>
           </div>
           <div class="col-5">
             <div class="card-title text-center">
