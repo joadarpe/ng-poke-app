@@ -1,11 +1,11 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink="/main/pokemons">Home</a></li>
-    <li class="breadcrumb-item active">Pokemons</li>
+    <li class="breadcrumb-item active">Favorites</li>
   </ol>
 </nav>
 <div class="row">
-  <app-pokemon-card *ngFor="let pokemon of pokemons | orderBy: 'id'" [pokemon]="pokemon" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"></app-pokemon-card>
+  <app-pokemon-card *ngFor="let pokemon of favorites | orderBy: 'id'" [pokemon]="pokemon" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"></app-pokemon-card>
 </div>
 <div class="col-12">
   <app-pagination [paginator]="paginator" (pageEmitter)="loadPage($event)"></app-pagination>

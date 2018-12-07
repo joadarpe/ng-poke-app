@@ -1,0 +1,20 @@
+<div class="card">
+    <img class="card-img-top" src="{{pokemon.sprites.front_default}}" alt="{{pokemon.name}}_front_default">
+    <div class="card-body">
+      <h4 class="card-title">
+        <span class="badge badge-secondary">{{pokemon.id}}</span>
+        {{pokemon.name | capitalCase}}
+      </h4>
+    </div>
+    <div class="card-footer text-right">
+      <button (click)="addFavorite()" title="Add to favorites" type="button" class="btn btn-outline-danger">
+        <i class="fa fa-heart"></i>
+      </button>
+      <button [routerLink]="['../detail/', pokemon.name]" title="Details" type="button" class="btn btn-outline-info">
+        <i class="fa fa-bars"></i>
+      </button>
+      <button [routerLink]="['../detail/', pokemon.name]" title="Share" type="button" class="btn btn-outline-success">
+        <i class="fa fa-share"></i>
+      </button>
+    </div>
+  </div>

@@ -5,3 +5,7 @@
 img.card-img-top {
     background-color: var(--header-back-color)
 }
+
+.card-footer button {
+    margin-left: 5px;
+}

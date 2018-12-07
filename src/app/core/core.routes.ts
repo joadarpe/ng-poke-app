@@ -13,6 +13,10 @@ export const CoreRoutes: Routes = [
             {
                 path: 'collections',
                 loadChildren: '../collections/collections.module#CollectionsModule'
+            },
+            {
+                path: 'favorites',
+                loadChildren: '../favorites/favorites.module#FavoritesModule'
             }
         ]
     }/*,
