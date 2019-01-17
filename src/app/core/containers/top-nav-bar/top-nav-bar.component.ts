@@ -1,4 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Store, select } from "@ngrx/store";
+import * as fromRoot from "../../../reducers";
+import * as fromLayout from "../../actions/layout";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -8,13 +12,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class TopNavBarComponent implements OnInit {
 
   @Output() searchEmitter: EventEmitter<string> = new EventEmitter()
-  @Output() toggleMenuEmitter: EventEmitter<string> = new EventEmitter()
 
-  isOpen: boolean = true;
+  isOpen: boolean;
 
-  constructor() { }
+  stateAside$: Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav))
+
+  constructor(private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
+    this.stateAside$.subscribe(s => this.isOpen = s == 'open')
   }
 
   callSearch(value: string) {
@@ -22,8 +28,10 @@ export class TopNavBarComponent implements OnInit {
   }
 
   toggleMenu() {
-    this.isOpen = !this.isOpen
-    this.toggleMenuEmitter.emit(this.isOpen ? 'open' : 'close')
+    if (this.isOpen)
+      this.store.dispatch(new fromLayout.CloseSideNav())
+    else
+      this.store.dispatch(new fromLayout.OpenSideNav())
   }
 
 }

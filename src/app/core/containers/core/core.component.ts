@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Store, select } from '@ngrx/store';
+import * as fromRoot from "../../../reducers";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-core',
@@ -16,21 +19,19 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class CoreComponent implements OnInit {
 
-  asideState: string = 'open'
-
   searchFilter: string
+  asideState: string
 
-  constructor() { }
+  stateAside$: Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav))
+
+  constructor(private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
+    this.stateAside$.subscribe(s => this.asideState = s)
   }
 
   callSearch(value: string) {
     this.searchFilter = value
-  }
-
-  changeState(value: string) {
-    this.asideState = value
   }
 
 }

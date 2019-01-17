@@ -15,6 +15,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, metaReducer } from './reducers';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,16 @@ import { environment } from 'src/environments/environment';
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig, environment.firebaseConfig.projectId),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+
+    StoreModule.forRoot(reducers, { metaReducers: metaReducer }),
+    StoreDevtoolsModule.instrument(
+      {
+        name: 'Ng Poke App', // Plugin App identifier
+        logOnly: environment.production, // Only logs on production
+        maxAge: 30 // State history
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
