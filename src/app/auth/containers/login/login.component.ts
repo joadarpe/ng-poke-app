@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(private store: Store<fromAuth.State>, private authService: AuthService, private msgService: MessagesService, private router: Router, private zone: NgZone) { }
 
   ngOnInit() {
-    this.loading$.subscribe(e => this.msgService.message({ msg: 'Loading', type: 'success' }))
-    this.loggedIn$.subscribe(e => this.msgService.message({ msg: 'Login successful', type: 'success' }))
+    this.loading$.subscribe(e => this.msgService.message({ msg: 'Logging in...', type: 'success' }))
+    this.loggedIn$.subscribe(e => this.msgService.message({ msg: 'Login successful!', type: 'success' }))
     this.error$.subscribe(e => this.msgService.message({ msg: e, type: 'error' }))
   }
 
@@ -43,12 +43,18 @@ export class LoginComponent implements OnInit {
   }
 
   signWithGoogle(event) {
-    if (event)
+    if (event) {
+      this.store.dispatch(new Auth.Login(event))
       this.authService.loginWithGoogle()
         .then(user => {
+          console.log(<UserInfo>user.user.toJSON())
           localStorage.setItem('ng-poke-app', JSON.stringify(user))
+          this.store.dispatch(new Auth.LoginSuccessful(<UserInfo>user.user.toJSON()))
           this.zone.run(_ => this.router.navigate(['main']))
+        }, error => {
+          this.store.dispatch(new Auth.LoginError(error))
         })
+    }
   }
 
 }
