@@ -26,8 +26,11 @@ export class LeftAsideComponent implements OnInit {
   ngOnInit() {
     this.authService.profileUser().subscribe(u => {
       if (u) {
+        console.log(u)
         this.user.name = u.displayName
         this.user.email = u.email
+        if (u.photoURL)
+          this.user.picUrl = u.photoURL
       }
     });
   }
