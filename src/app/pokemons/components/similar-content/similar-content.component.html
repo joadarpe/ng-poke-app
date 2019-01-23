@@ -3,8 +3,10 @@
     <h3>Similar Pokemons</h3>
     <div class="row justify-content-center">
       <div *ngFor="let pokemon of similars" class="col-3">
-        <img class="card-img-top" src="{{pokemon.sprites.front_default}}" alt="{{pokemon?.name}}_front_default">
-        <div class="col-12 badge badge-secondary">{{pokemon.name | capitalCase}}</div>
+        <button [routerLink]="['../../detail/', pokemon.name]">
+          <img class="card-img-top" src="{{pokemon.sprites.front_default}}" alt="{{pokemon?.name}}_front_default">
+          <div class="col-12 badge badge-secondary">{{pokemon.name | capitalCase}}</div>
+        </button>
       </div>
     </div>
   </div>

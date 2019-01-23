@@ -20,11 +20,16 @@ export class PokemonDetailComponent implements OnInit {
     let name: string
     this.route.params.subscribe((params: Params) => name = params.name)
     this.pokedex.getPokemonByName(name).then(p => {
+      this.loadSimilarPokemons(p)
       this.pokemon = p
-      this.similars = []
-      this.similars.push(p)
-      this.similars.push(p)
-      //this.similars.push(p)
+    })
+  }
+
+  loadSimilarPokemons(original: Pokemon) {
+    this.similars = []
+    this.pokedex.getTypeByName(original.types[0].type.name).then(t => {
+      let ls = t.pokemon.filter(p => p.pokemon.name != original.name).slice(0, 3)
+      ls.forEach(p => this.pokedex.getPokemonByName(p.pokemon.name).then(p => this.similars.push(p)))
     })
   }
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Pokedex } from 'pokeapi-js-wrapper'
 import { Pokemon } from '../../models/classes/Pokemon';
-import { PokemonSpecies } from '../../models/classes/PokemonSpecies';
+import { PokemonSpecie } from '../../models/classes/PokemonSpecie';
 import { FlavorText } from '../../models/classes/FlavorText';
+import { Type } from '../../models/classes/Type';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,12 @@ export class PokedexService {
     return this._instance.getPokemonByName(name)
   }
 
-  getPokemonSpeciesByName(name: string): Promise<PokemonSpecies> {
+  getPokemonSpecieByName(name: string): Promise<PokemonSpecie> {
     return this._instance.getPokemonSpeciesByName(name)
+  }
+
+  getTypeByName(name: string): Promise<Type> {
+    return this._instance.getTypeByName(name)
   }
 
   findTextByLanguage(texts: FlavorText[], ln: string = 'en'): string {

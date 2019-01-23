@@ -31,7 +31,7 @@ export class DetailContentComponent implements OnInit {
   }
 
   loadDescription(name: string) {
-    this.pokedex.getPokemonSpeciesByName(name).then(s =>
+    this.pokedex.getPokemonSpecieByName(name).then(s =>
       this.description = this.pokedex.findTextByLanguage(s.flavor_text_entries))
   }
 
