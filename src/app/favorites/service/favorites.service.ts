@@ -29,7 +29,7 @@ export class FavoritesService {
     this.favsRef.push({ name: pokemon.name })
       .then(_ => {
         this.alertService.message({
-          msg: `${pokemon.name} ha sido agregado a tus favoritos`,
+          msg: `${pokemon.name} ha sido agregado a tus favoritos!`,
           type: 'success'
         })
       })

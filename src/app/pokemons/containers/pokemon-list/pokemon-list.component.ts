@@ -4,6 +4,7 @@ import { Paginator } from 'src/app/core/services/Paginator';
 import { NamedAPIResource } from 'src/app/core/models/classes/NamedAPIResource';
 import { PokedexService } from 'src/app/core/services/pokedex/pokedex.service';
 import { PokemonService } from 'src/app/core/services/pokemon/pokemon.service';
+import { FavoritesService } from 'src/app/favorites/service/favorites.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -24,16 +25,20 @@ export class PokemonListComponent implements OnInit {
     this.doSearch((value) ? value.toLowerCase() : value)
   }
 
+  favorites: any[] = []
   pokemonsResult: NamedAPIResource[]
   pokemons: Pokemon[] = []
   paginator: Paginator = new Paginator();
 
-  constructor(private pokemonsService: PokemonService, private pokedex: PokedexService) { }
+  constructor(private favoritesService: FavoritesService, private pokemonsService: PokemonService, private pokedex: PokedexService) { }
 
   ngOnInit() {
-    this.pokemonsService.getPokemons().subscribe(ps => {
-      this.pokemonsResult = ps
-      this.loadPokemons(this.pokemonsResult)
+    this.favoritesService.getFavorites().subscribe(fav => {
+      this.favorites = fav
+      this.pokemonsService.getPokemons().subscribe(ps => {
+        this.pokemonsResult = ps
+        this.loadPokemons(this.pokemonsResult)
+      })
     })
   }
 
@@ -57,7 +62,18 @@ export class PokemonListComponent implements OnInit {
   }
 
   loadPokemonInfo(ps: any[], r: NamedAPIResource) {
-    this.pokedex.getPokemonByName(r.name).then(p => ps.push(p));
+    this.pokedex.getPokemonByName(r.name).then(p => {
+      ps.push({
+        ...p,
+        isFavorite: this.isInFavorites(r.name)
+      })
+    });
+  }
+
+  isInFavorites(name: string): boolean {
+    if (this.favorites)
+      return this.favorites.find(p => p['name'] == name) != undefined
+    return false
   }
 
 }

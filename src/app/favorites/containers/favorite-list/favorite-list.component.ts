@@ -36,7 +36,12 @@ export class FavoriteListComponent implements OnInit {
   }
 
   loadPokemonInfo(ps: any[], r: any) {
-    this.pokedex.getPokemonByName(r.name).then(p => ps.push(p));
+    this.pokedex.getPokemonByName(r.name).then(p => {
+      ps.push({
+        ...p,
+        isFavorite: true
+      })
+    });
   }
 
 }

@@ -7,7 +7,7 @@
       </h4>
     </div>
     <div class="card-footer text-right">
-      <button (click)="addFavorite()" title="Add to favorites" type="button" class="btn btn-outline-danger">
+      <button *ngIf="!pokemon.isFavorite" (click)="addFavorite()" title="Add to favorites" type="button" class="btn btn-outline-danger">
         <i class="fa fa-heart"></i>
       </button>
       <button [routerLink]="['../detail/', pokemon.name]" title="Details" type="button" class="btn btn-outline-info">

@@ -8,4 +8,5 @@ export class Pokemon {
     height: number
     sprites: Sprites
     abilities: PokemonAbility[]
+    isFavorite: boolean | null
 }

@@ -17,7 +17,8 @@ export class PokemonCardComponent implements OnInit {
   }
 
   addFavorite() {
-    this.favoritesService.addFavorite(this.pokemon);
+    if (!this.pokemon.isFavorite)
+      this.favoritesService.addFavorite(this.pokemon);
   }
 
 }
